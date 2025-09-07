@@ -128,7 +128,7 @@ const Cart = () => {
 
                   <div className="text-right">
                     <p className="font-semibold text-lg">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      ₹{(item.price * item.quantity*100).toFixed(2)}
                     </p>
                     <button
                       onClick={() => removeFromCart(item.product_id.toString())}
