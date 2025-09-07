@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
             {product.description}
           </p>
           <p className="text-2xl font-bold text-blue-600">
-            ${product.price.toFixed(2)}
+            ₹{product.price.toFixed(2)*100}
           </p>
           <p className="text-sm text-gray-500">
             Stock: {product.stock_quantity}
