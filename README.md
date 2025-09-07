@@ -30,6 +30,10 @@ A full-stack e-commerce application built with React and Node.js, featuring a mo
 - **CORS** - Cross-Origin Resource Sharing middleware
 - **Multer** - File upload handling middleware
 
+
+The frontend of the website is deployed on Vercel.
+The backend of the website is deployed on Render.
+
 ## 📁 Project Structure
 
 ```
