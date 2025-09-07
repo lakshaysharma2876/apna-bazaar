@@ -12,7 +12,8 @@ const Cart = () => {
       return '/placeholder.svg';
     }
     if (image_url.startsWith('/uploads')) {
-      return `http://localhost:3001${image_url}`;
+      const backendUrl = import.meta.env.VITE_BACKEND_URL?.replace('/api', '') || 'http://localhost:3001';
+      return `${backendUrl}${image_url}`;
     }
     return image_url;
   };

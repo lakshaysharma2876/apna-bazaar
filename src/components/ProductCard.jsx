@@ -9,12 +9,23 @@ const ProductCard = ({ product }) => {
     await addToCart(product.id.toString());
   };
 
+  const getImageUrl = (image_url) => {
+    if (!image_url || image_url === '/placeholder.svg') {
+      return '/placeholder.svg';
+    }
+    if (image_url.startsWith('/uploads')) {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL?.replace('/api', '') || 'http://localhost:3001';
+      return `${backendUrl}${image_url}`;
+    }
+    return image_url;
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-sm border overflow-hidden h-full flex flex-col hover:shadow-md transition-shadow">
       {/* Product Image */}
       <div className="aspect-square relative overflow-hidden">
         <img
-          src={product.image_url || '/placeholder.svg'}
+          src={getImageUrl(product.image_url)}
           alt={product.name}
           className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
         />
