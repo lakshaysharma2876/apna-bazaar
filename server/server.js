@@ -13,7 +13,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-producti
 
 // Middleware
 app.use(cors({
-  origin: ['https://your-vercel-domain.vercel.app'],
+  origin: ['https://apna-bazaar-7jx3.vercel.app/'],
   credentials: true
 }));
 app.use(express.json());
