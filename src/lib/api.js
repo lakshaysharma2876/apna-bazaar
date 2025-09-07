@@ -1,5 +1,16 @@
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001/api';
 
+// Helper to join URLs safely
+const joinUrl = (base, path) => {
+  if (base.endsWith('/') && path.startsWith('/')) {
+    return base + path.slice(1);
+  }
+  if (!base.endsWith('/') && !path.startsWith('/')) {
+    return base + '/' + path;
+  }
+  return base + path;
+};
+
 // Helper function to create headers with auth token
 const createHeaders = (customHeaders = {}) => {
   const headers = {
@@ -36,7 +47,7 @@ const handleResponse = async (response) => {
 // Fetch-based API client
 const api = {
   get: async (url, options = {}) => {
-    const response = await fetch(`${API_BASE_URL}${url}`, {
+    const response = await fetch(joinUrl(API_BASE_URL, url), {
       method: 'GET',
       headers: createHeaders(options.headers),
       ...options,
@@ -45,7 +56,7 @@ const api = {
   },
   
   post: async (url, data, options = {}) => {
-    const response = await fetch(`${API_BASE_URL}${url}`, {
+    const response = await fetch(joinUrl(API_BASE_URL, url), {
       method: 'POST',
       headers: createHeaders(options.headers),
       body: JSON.stringify(data),
@@ -55,7 +66,7 @@ const api = {
   },
   
   put: async (url, data, options = {}) => {
-    const response = await fetch(`${API_BASE_URL}${url}`, {
+    const response = await fetch(joinUrl(API_BASE_URL, url), {
       method: 'PUT',
       headers: createHeaders(options.headers),
       body: JSON.stringify(data),
@@ -65,7 +76,7 @@ const api = {
   },
   
   delete: async (url, options = {}) => {
-    const response = await fetch(`${API_BASE_URL}${url}`, {
+    const response = await fetch(joinUrl(API_BASE_URL, url), {
       method: 'DELETE',
       headers: createHeaders(options.headers),
       ...options,
