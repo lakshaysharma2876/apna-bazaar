@@ -1,18 +1,6 @@
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/hooks/useAuth';
 
-const getImageUrl = (image_url) => {
-  if (!image_url || image_url === '/placeholder.svg') {
-    return '/placeholder.svg';
-  }
-  // If image_url starts with '/uploads', prepend backend URL
-  if (image_url.startsWith('/uploads')) {
-    return `http://localhost:3001${image_url}`;
-  }
-  // Otherwise, use as is (for external URLs or public assets)
-  return image_url;
-};
-
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   const { user } = useAuth();
@@ -26,7 +14,7 @@ const ProductCard = ({ product }) => {
       {/* Product Image */}
       <div className="aspect-square relative overflow-hidden">
         <img
-          src={getImageUrl(product.image_url)}
+          src={product.image_url || '/placeholder.svg'}
           alt={product.name}
           className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
         />
