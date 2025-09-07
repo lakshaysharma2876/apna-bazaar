@@ -31,8 +31,8 @@ A full-stack e-commerce application built with React and Node.js, featuring a mo
 - **Multer** - File upload handling middleware
 
 
-The frontend of the website is deployed on Vercel.
-The backend of the website is deployed on Render.
+The frontend of the website is deployed on Vercel --> https://apna-bazaar-qell.vercel.app/ 
+The backend of the website is deployed on Render --> https://apna-bazaar-t1qf.onrender.com/         (use /api/products to see the api listings)
 
 ## 📁 Project Structure
 
